@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.20)
 project(Example VERSION 0.1.0 LANGUAGES CSharp)
 
 include(CSharpUtilities)
@@ -23,19 +23,14 @@ csharp_set_xaml_cs_properties(
 
 set_property(SOURCE App.xaml PROPERTY VS_XAML_TYPE "ApplicationDefinition")
 
-set_property(TARGET Example PROPERTY VS_DOTNET_TARGET_FRAMEWORK_VERSION "v4.6.1")
+set_property(TARGET Example PROPERTY DOTNET_SDK "Microsoft.NET.Sdk")
+set_property(TARGET Example PROPERTY DOTNET_TARGET_FRAMEWORK "net6.0")
+
 set_property(TARGET Example PROPERTY WIN32_EXECUTABLE TRUE)
 
-set_property(TARGET Example PROPERTY VS_DOTNET_REFERENCES
-	"Microsoft.CSharp"
-	"PresentationCore"
-	"PresentationFramework"
-	"System"
-	"System.Core"
-	"System.Data"
-	"System.Data.DataSetExtensions"
-	"System.Net.Http"
-	"System.Xaml"
-	"System.Xml"
-	"System.Xml.Linq"
-	"WindowsBase")
+#set_property(
+#  TARGET Example
+#  PROPERTY VS_PACKAGE_REFERENCES
+#  "Microsoft.WindowsAppSDK_1.4.230913002"
+#  "Microsoft.Windows.SDK.BuildTools_10.0.22621.755"
+#)
